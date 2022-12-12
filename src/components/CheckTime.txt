@@ -1,0 +1,10 @@
+import { movies } from "../movies";
+import { Screen } from "./Screen/Screen";
+
+/*export const CheckTime = () => {
+  const currentTime = new Date().toString();
+
+  if (currentTime === movies.time) {
+    return <Screen />;
+  }
+}*/
