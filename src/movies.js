@@ -1,6 +1,6 @@
 export const movies = [
   {
-    id: 1,
+    id: 0,
     //img: ,
     title: "Rise of the Guardians",
     time: '10:00',
@@ -8,7 +8,7 @@ export const movies = [
   },
 
   {
-    id: 2,
+    id: 1,
     //img:,
     title: 'How to train your dragon',
     time: '10:00',
@@ -16,7 +16,7 @@ export const movies = [
   },
 
   {
-    id: 3,
+    id: 2,
     //img:,
     title: 'Beauty and the Beast',
     time: '10.00',
@@ -39,7 +39,7 @@ export const movies = [
     amountOfTickets: 50,
   },
 
-  {
+  /*{
     id: 5,
     //img:,
     title: 'Home Alone',
@@ -47,7 +47,7 @@ export const movies = [
     amountOfTickets: 50,
   },
 
-  /*{
+  {
     id: 6,
     //img:,
     title: 'Home Alone 1: Lost in New York',

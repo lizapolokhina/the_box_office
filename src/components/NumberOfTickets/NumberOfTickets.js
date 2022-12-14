@@ -1,31 +1,59 @@
 import React, { useState, useEffect } from "react";
-import { seats } from "../../Seats";
+//import { seats } from "../../Seats";
+import { movies } from "../../movies";
 import { TicketMessage } from "../TicketMessage/TicketMessage";
 
-export const NumberOfTickets = () => {
-  const [numberOfTickets, setNumberOfTickets] = useState('default');
+export const NumberOfTickets = ({ selectedMovie }) => {
+  const [numberOfTickets, setNumberOfTickets] = useState(movies.map(el => el.amountOfTickets));
+  const [currentNumber, setCurrentNumber] = useState(0);
+  const [error, setError] = useState(false);
   
   useEffect(() => {
-    localStorage.getItem('NUMBER_OF_TICKETS', JSON.stringify(numberOfTickets))
-  }, [numberOfTickets])
+    localStorage.setItem('NUMBER_OF_TICKETS', JSON.stringify(numberOfTickets))
+  }, [numberOfTickets, currentNumber]);
 
-  const SelectANumber = (event) => {
+  console.log(selectedMovie);
+
+  const selectANumber = (event) => {
     console.log("Number of tickets selected - ", event.target.value);
-    setNumberOfTickets(event.target.value);
-}
+    setCurrentNumber(event.target.value);
+
+    const newArr = numberOfTickets;
+
+    if (selectedMovie && newArr[selectedMovie] - event.target.value > 0) {
+      newArr[selectedMovie] = newArr[selectedMovie] - event.target.value;
+    } else {
+      setError(true);
+      return;
+    }
+
+    setNumberOfTickets(newArr);
+    
+    //numberOfTickets - setNumberOfTickets???
+
+    //var foo = [ ...Array(N).keys() ];
+  }
+
+  const chosenMovie = movies.filter(movie => movie.id.toString() === selectedMovie)[0];
+
   return (
     <>
-      <select value={numberOfTickets} onChange={SelectANumber}>
+      <select value={currentNumber} onChange={selectANumber}>
         <option>0</option>
-        {seats.map((seat, index) => (
-          <option key={index}>
-            {seat.id}
+        {[ ...Array(chosenMovie.amountOfTickets).keys()].map((seat) => (
+          <option key={seat}>
+            {seat}
           </option>
         )) 
          
         }
       </select>
-      {numberOfTickets !== 'default' && <TicketMessage />}
+      {numberOfTickets !== 0 && selectedMovie !== undefined &&
+        <TicketMessage 
+          numberOfTickets={currentNumber} 
+          selectedMovie={selectedMovie}
+          hasError={error}
+          />}
     </>
   )
 }
