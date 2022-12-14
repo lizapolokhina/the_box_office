@@ -23,7 +23,7 @@ export const User = () => {
           />
         </div>
 
-        {name !== '' && <SelectAMovie name={name}/>}
+        {name !== '' && <SelectAMovie name={name} setName={setName} />}
     </>
   )
 }

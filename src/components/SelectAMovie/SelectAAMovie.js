@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { movies } from '../../movies';
 import { NumberOfTickets } from "../NumberOfTickets/NumberOfTickets";
 
-export const SelectAMovie = ({ name }) => {
+export const SelectAMovie = ({ name, setName }) => {
   const [selectedMovie, setSelectedMovie] = useState(undefined);
   //const {movieIndex, setMovieIndex} = useState(null);
   //const [selectShown, setSelectShown] = useState(false)
@@ -32,7 +32,7 @@ console.log('state', selectedMovie)
            
         }
       </select>
-      {selectedMovie !== undefined && <NumberOfTickets selectedMovie={selectedMovie} />}
+      {selectedMovie !== undefined && <NumberOfTickets selectedMovie={selectedMovie} setName={setName} />}
        
     </>
   )
