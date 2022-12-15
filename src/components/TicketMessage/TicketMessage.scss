@@ -1,0 +1,25 @@
+.ticketMessage {
+  box-sizing: border-box;
+  font-weight: 100;
+  background-color: #4FFFB0;
+  border: solid #1B4D3E 1px;
+  border-radius: 5px;
+  max-width: 500px;
+  opacity: 0.8;
+  font-weight: 400;
+  font-style: bold;
+  padding: 20px;
+
+  &__confirm-button {
+    margin-right: 10px;
+    background-color: #98FB98;
+    border-style: none;
+    padding: 5px;
+  }
+
+  &__clear-button {
+    background-color: #98FB98;
+    border-style: none;
+    padding: 5px;
+  }
+}
